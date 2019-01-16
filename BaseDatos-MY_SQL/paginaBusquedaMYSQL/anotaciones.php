@@ -1,5 +1,6 @@
 <?php
-$busqueda = $_GET["buscar"];
+//OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO LOS ARRAYS ASOCIATIVOS HACEN MENCION A LAS CAMPOS ES MEJOR QUE FETCH_ROW ES MEJOR FETCH_ARRAY
+$busqueda=$_GET["buscar"];
 require("../funcionConexion.php");// llama a la funcion para tener un solo archivo para conectar y asi evitar incluir en cada php que hagamos
 
 
@@ -68,9 +69,9 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 echo "<b>ASI SE RECORRE UNA CONSULTA COMPLETA DE BBDD CON BUCLE YA QUE ESTO ES LO QUE SE NECESITA:::::::</b>" . "<br><br>";
-while($Fila = mysqli_fetch_array($Resultado)){//Mientras la variable fila tenga informacion hara lo del bucle ... arreglo asociativo (, MYSQL_ASSOC)
+while($Fila = mysqli_fetch_array($Resultado,MYSQLI_BOTH)){//Mientras la variable fila tenga informacion hara lo del bucle ... arreglo asociativo (, MYSQL_ASSOC)
 echo "<table width='50%' align='center'><tr><td>";
-    echo $Fila['CÓDIGOARTÍCULO'] . "</td><td>";
+    echo $Fila['CÓDIGOARTÍCULO'] . "</td><td>";//USO DE LOS ARREGLOS ASOCIATIVOS::::: EN VEZ DE [1] SERIA ['CODIGOARTICULO']
     echo $Fila['NOMBREARTÍCULO'] . "</td><td>";
     echo $Fila['SECCIÓN'] . "</td><td>";
     echo $Fila['IMPORTADO'] . "</td><td>";
@@ -95,8 +96,13 @@ mysqli_close($Conexion)//se especifica las conexiones ya que en la vida real se 
 
 /*
     CARACTERES COMODIN:
-     % SUSTITUYE UNA CADENA DE CARACTERES
-     _ SUSTITUYE UN CARACTER
+     % SUSTITUYE UNA CADENA DE CARACTERES: queremos ver todos los articulos que terminen en caballero o tambien inicien en caballero o bien en ambos  terminen e inicien
+     _ SUSTITUYE UN UNICO CARACTER: este es por seguridad por si aun acaso no sabes si esta bien escrita un campo de la consulta por ejemplo:
+     balon 
+     pero tu escribres balom
+     si no sabes pones balo_
+    
+     OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO SE UNA EL CARACTER "LIKE" EN ESTE TIPO DE CONSULTA CON LOS CARACTERES COMODIN
 */
 
 ?>
