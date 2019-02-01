@@ -11,10 +11,35 @@
 <body>
 <?php
   include("Conexion.php");//Creamos la conexion en el Index
-  $conexion = $BasedeDatos->query("SELECT * FROM DATOS_USUARIOS");//Probando la conexion
+
+  /**********************************************PAGINACION****************************************************/
+  $tamanio_pag = 3; //para la paginacion
+            if(isset($_GET["pagina"])){//SI YA HIZO CLICK EN LA PAGINACION
+                if($_GET["pagina"]==1){//EN LA PAGINACION HAY UNA VARIABLE LLAMADA pagina 
+                    header("Location: index.php");
+                }else{
+                    $pagina = $_GET["pagina"];
+                }
+            }else{
+                $pagina = 1;
+            }
+            //$pagina = 1; //para la paginacion .... NADA MAS CARGAR LA PAGINA DEBE MOVER LA PAGINA A LA 1
+            $empezar_desde = ($pagina-1)*$tamanio_pag;
+
+
+            $sql_total = "SELECT * FROM DATOS_USUARIOS";//LIMIT(CUANTOS_REGISTROS_QUIERES_VER, CUANTOS_A_PARTIR_DE_ESE); LIMIT 0,3
+            $resultado = $BasedeDatos->prepare($sql_total);
+    $resultado->execute(array());
+
+    $numero_filas = $resultado->rowCount();//Cuenta las filas del array y las almacena en numero de filas
+    $total_paginas = ceil($numero_filas / $tamanio_pag) . "<br>";//redondea como int
+    /**************************************************************************************************************/
+
+  $conexion = $BasedeDatos->query("SELECT * FROM DATOS_USUARIOS LIMIT $empezar_desde,$tamanio_pag");//Probando la conexion
   $registros = $conexion->fetchAll(PDO::FETCH_OBJ);//ARRAY DE OBJETOS
   //$registros = $BasedeDatos->query("SELECT * FROM DATOS_USUARIOS")->fetchAll(PDO::FETCH_OBJ);}
 
+  
   if(isset($_POST["insertar-registro"])){
     $nombre = $_POST["Nom"];
     $apellido = $_POST["Ape"];
@@ -66,8 +91,15 @@
       <td><input type='text' name='Nom' size='10' class='centrado'></td>
       <td><input type='text' name='Ape' size='10' class='centrado'></td>
       <td><input type='text' name=' Dir' size='10' class='centrado'></td>
-      <td class='bot'><input type='submit' name='insertar-registro' id='insertar-registro' value='Insertar'></td></tr>  
+      <td class='bot'><input type='submit' name='insertar-registro' id='insertar-registro' value='Insertar'></td></tr> 
+      <tr><?php
+        //PAGINACION
+        for($i=1;$i<=$total_paginas;$i++){
+          echo "<td><div style=' margin-left: 20px; text-align:center; width:25px; height:25px; background:rgba(0,36,132,0.9); display:inline-block;'><a style='text-decoration:none; font-size: 20px; font-weight:700; color:white;' href='?pagina=" . $i . "'>" . $i . "</a>  </div></td>";//pasa por parametro a la url el numero de paginas
+        }
+      ?></tr>
   </table>
+
 </form>  
 <p>&nbsp;</p>
 </body>

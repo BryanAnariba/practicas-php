@@ -16,6 +16,15 @@
 
             //PAGINA PAGINACION
             $tamanio_pag = 3; //para la paginacion
+            if(isset($_GET["pagina"])){//SI YA HIZO CLICK EN LA PAGINACION
+                if($_GET["pagina"]==1){//EN LA PAGINACION HAY UNA VARIABLE LLAMADA pagina 
+                    header("Location: index.php");
+                }else{
+                    $pagina = $_GET["pagina"];
+                }
+            }else{
+                $pagina = 1;
+            }
             $pagina = 1; //para la paginacion .... NADA MAS CARGAR LA PAGINA DEBE MOVER LA PAGINA A LA 1
             $empezar_desde = ($pagina-1)*$tamanio_pag;
 
@@ -43,6 +52,10 @@
 
         }catch(Exception $e){
             echo "Error en la Linea" . $e->getLine();
+        }
+        //PAGINACION
+        for($i=1;$i<=$total_paginas;$i++){
+            echo "<div style=' margin-left: 20px; text-align:center; width:25px; height:25px; background:rgba(0,36,132,0.9); display:inline-block;'><a style='text-decoration:none; font-size: 20px; font-weight:700; color:white;' href='?pagina=" . $i . "'>" . $i . "</a>  </div>";//pasa por parametro a la url el numero de paginas
         }
     ?>
 </body>
