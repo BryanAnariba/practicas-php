@@ -1,0 +1,61 @@
+Herencia: caracteristica de los 
+lenguajes 
+de 
+programacion 
+orientada
+a 
+objetos
+
+
+al igual se hace con el objetivo de reutilizar codigo
+imaginar  clases
+
+clase1->metodos y atributos clase1
+    clase2->metodos y atributos clase2
+        clase3->metodos y atributos clase3.
+
+podemos hacer una cadena de herencia en que la 
+    clase3 hereda metodos y atributos de la clase2 y clase1 
+        y clase2 de la clase1.
+
+
+TERMINOS DESCONOCIDOS:
+*Super clase: ejemplo clase 1 es super clase de clase 2 clase 2 es subclase de 1.
+
+sintaxis de herencia en PHP
+
+
+/**************************************************************/
+class clase1{
+    //CODIGO
+}
+
+    class clase2 extends clase1 {
+        //CODIGO
+    }
+
+        class clase3 extends clase2 {
+            //CODIGO
+        }
+/**************************************************************/
+
+
+
+
+
+
+                                                ENCAPSULACION Y MODIFICADORES DE ACCESO:
+
+modularizacion: dividir el programa el pequeños fragmentos para asi si hay un error identificarlo mas facilmente, basicamente dividirlo en partes.
+
+
+* public: accesible desde cualquier clase.
+
+
+* private:  solo es posible usar desde la propia clase.
+
+
+* protected:  solo es posible acceder desde propia clase y clases que heredan de el.
+
+
+                            para acceder a atributos private o protected se deben de hacer metodos getters y setters
