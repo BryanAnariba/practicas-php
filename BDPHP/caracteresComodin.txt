@@ -1,0 +1,13 @@
+% ::::::::> sustituye a una cadena de caracteres
+
+_ :::::::::> sustituye a un unico caracter
+
+
+
+
+CON %:
+	SELECT * FROM artículos WHERE NOMBREARTÍCULO LIKE "%CABALLERO"; QUE INICIEN CON CUALQUIER COSA PERO TERMINEN EN CABALLERO
+	SELECT * FROM artículos WHERE NOMBREARTÍCULO LIKE "BALóN%";	QUE INICIEN EN BALON PERO TERMINEN EN CUALQUIER PALABRA
+
+CON _
+	SELECT * FROM artículos WHERE NOMBREARTÍCULO LIKE "Ceni_ero";	por ejemplo si en la base esta Cenicero y Cenizero, CON _ no importa ya que omite el caracter

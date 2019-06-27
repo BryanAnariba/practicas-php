@@ -14,7 +14,7 @@
     
     /********************************PASOS PARA REALIZAR UNA CONSULTA***********************************/
 
-    $consultaUno = "SELECT * FROM ARTíCULOS";
+    $consultaUno = "SELECT SECCIÓN , NOMBREARTÍCULO , FECHA ,PAÍSDEORIGEN , ROUND(PRECIO , 2) AS PRECIO_REDONDEADO FROM ARTíCULOS";
 
 
     $resultado = mysqli_query($conexionBaseDatos,$consultaUno);
@@ -36,13 +36,13 @@
                     </tr>
                 </thead>
                 <tbody>";
-    while(($filaConsulta=mysqli_fetch_row($resultado))==true){
+    while(($filaConsulta=mysqli_fetch_array($resultado , MYSQLI_ASSOC))){
         echo    "<tr>
-                    <td>" . $filaConsulta[0] . "</td>
-                    <td>" . $filaConsulta[1] . "</td>
-                    <td>" . $filaConsulta[2] . "</td>
-                    <td>" . $filaConsulta[3] . "</td>
-                    <td>" . $filaConsulta[4] . "</td>
+                    <td>" . $filaConsulta['SECCIÓN'] . "</td>
+                    <td>" . $filaConsulta['NOMBREARTÍCULO'] . "</td>
+                    <td>" . $filaConsulta['FECHA'] . "</td>
+                    <td>" . $filaConsulta['PAÍSDEORIGEN'] . "</td>
+                    <td>" . $filaConsulta['PRECIO_REDONDEADO'] . "</td>
                 </tr>
                 </center>";
     }
