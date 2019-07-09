@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image : url(../img/fondo.jpg) ;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+}
+center h1 {
+    color:white;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+
+/*100% del contenedor en este caso el tamaño del div*/
+img {
+    width:100%;
+}
+
+/*LINEA AZUL DEBAJO DEL NABVAR*/
+.navbar {
+    border-bottom: #005073 6px solid;
+    /*opacity: 1;*/
+}
+
+
+/*PORTAFOLIO PASOS*/
+.potaforio {
+    width:  90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/*USANDO FLEXBOX ES MEJOR*/
+.portafolio-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.portafolio-item {
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.portafolio-imagen {
+    transition: all 0.6s ease-out;
+}
+.portafolio-text {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    color:white;
+    padding: 20px;
+    border-radius: 20px;
+    transform: translateY(100%);
+    transition: all 0.6s ease-out;
+}
+.portafolio-text p{
+    text-align: justify;
+    
+}
+.portafolio-item:hover .portafolio-text{
+    transform: translateY(0%);
+}
+
+.portafolio-item:hover .portafolio-imagen{
+    transform: scale(1.15);
+}
+
+.portafolio-item:hover .portafolio-text {
+    -webkit-transform:  translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+}
+.portafolio-item:hover .portafolio-imagen {
+    -webkit-transform:  scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+}

@@ -16,7 +16,7 @@
 </head>
 <body>
 <?php
-        include("connetPHP.php");
+    include("connetPHP.php");
 
     
     /********************************PASOS PARA REALIZAR UNA CONSULTA***********************************/
@@ -26,8 +26,7 @@
 
 
 
-    $consultaUno = "SELECT SECCIÓN , NOMBREARTÍCULO , FECHA ,PAÍSDEORIGEN , ROUND(PRECIO , 2) AS PRECIO_REDONDEADO FROM ARTíCULOS WHERE NOMBREARTÍCULO LIKE '%$nombreArt%'";
-
+    $consultaUno = "SELECT COD_ART , SECCION , NOMBRE_ARTICULO , FECHA , PAIS_DE_ORIGEN , ROUND(PRECIO , 2) AS PRECIO_REDONDEADO FROM ARTíCULOS WHERE NOMBRE_ARTICULO LIKE '%$nombreArt%'";
 
     $resultado = mysqli_query($conexionBaseDatos,$consultaUno);
 
@@ -40,6 +39,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Codigo Articulo</th>
                         <th>Seccion</th>
                         <th>Nombre Articulo</th>
                         <th>Fecha</th>
@@ -49,11 +49,12 @@
                 </thead>
                 <tbody>";
     while(($filaConsulta=mysqli_fetch_array($resultado , MYSQLI_ASSOC))){
-        echo    "<tr style='color:white; font-weight:bold;'>
-                    <td>" . $filaConsulta['SECCIÓN'] . "</td>
-                    <td>" . $filaConsulta['NOMBREARTÍCULO'] . "</td>
+        echo    "<tr style='color:black; font-weight:bold;'>
+                    <td>" . $filaConsulta['COD_ART'] . "</td>
+                    <td>" . $filaConsulta['SECCION'] . "</td>
+                    <td>" . $filaConsulta['NOMBRE_ARTICULO'] . "</td>
                     <td>" . $filaConsulta['FECHA'] . "</td>
-                    <td>" . $filaConsulta['PAÍSDEORIGEN'] . "</td>
+                    <td>" . $filaConsulta['PAIS_DE_ORIGEN'] . "</td>
                     <td>" . $filaConsulta['PRECIO_REDONDEADO'] . "</td>
                 </tr>
                 </center>";
