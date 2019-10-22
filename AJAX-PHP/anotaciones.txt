@@ -1,0 +1,7 @@
+BD-MYSQL
+
+Nombre -> task-app
+Nombre Tabla -> task
+Campos Tabla -> id int primary ai, 
+                name varchar(100), 
+                description varchar(255);
