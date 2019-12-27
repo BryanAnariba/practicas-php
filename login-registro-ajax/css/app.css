@@ -1,0 +1,178 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #007991;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+:root {
+    --content-max-width: 960px;
+    --nav-height: 60px;
+    --color-bg-nav: #353b48;
+    --color-bg-content-nav: #404757;
+}
+
+/* Contenedor principal */
+.root {
+    overflow-x: hidden;
+    min-height: 65vh;
+    z-index:4;
+}
+
+/* navbar */
+.nav-bar {
+    background-color: var(--color-bg-nav);
+    height: var(--nav-height);
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.nav-bar__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    height: 100%;
+    max-width: var(--content-max-width);
+    margin: auto;
+    position: relative;
+}
+
+/* Logo */
+.nav-bar__logo-container {
+    width: 50%;
+}
+
+.nav-bar__link-logo, .nav-bar__img-logo {
+    display: block;
+}
+
+.nav-bar__img-logo {
+    max-width: 100%;
+    max-height: var(--nav-height);
+}
+
+/* Icono de hamburguesa */
+.nav-bar__icon {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 5px 5px 1px;
+    cursor: pointer;
+}
+
+.nav-bar__icon:before {
+    display: block;
+    color: var(--color-bg-nav);
+    font-size: 1.5rem;
+}
+
+/* La parte que se oculta en versión móvil */
+.nav-bar__collapse {
+    position: absolute;
+    width: 100%;
+    padding: 15px 0;
+    background-color: #353B48;
+    transition: all .2s;
+    top: 100%;
+    left: 0;
+}
+
+.nav-bar__collapse.from-left {
+    top: 100%;
+    left: -100%;
+}
+
+.nav-bar__collapse.from-right {
+    top: 100%;
+    left: 100%;
+}
+
+.nav-bar__collapse.show {
+    top: 100%;
+    left: 0;
+}
+
+/* Menú */
+.menu {
+    list-style: none;
+}
+
+.menu__link, .nav-bar__link-login, .nav-bar__link-register {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: .8rem;
+}
+
+.menu__link:hover, .nav-bar__link-login:hover, .nav-bar__link-register:hover {
+    background-color: var(--color-bg-nav);
+}
+
+.nav-bar__link-login, .nav-bar__link-register {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.nav-bar__link-login:before, .nav-bar__link-register:before {
+    display: block;
+    margin-left: 5px;
+    color: #FFCC00;
+}
+
+/* Estilos para la versión tablet */
+@media (min-width: 768px) {
+    /* Icono de hamburguesa */
+    .nav-bar__icon {
+        display: none;
+    }
+
+    /* Contenedor del logo */
+    .nav-bar__logo-container {
+        width: auto;
+    }
+
+    /* La parte que se oculta en versión móvil */
+    .nav-bar__collapse {
+        position: static;
+        background-color: transparent;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        margin-left: 10px;
+    }
+
+    /* Menú */
+    .menu {
+        display: flex;
+    }
+
+    .menu__link, .nav-bar__link-login, .nav-bar__link-register {
+        padding: 0 5px;
+        line-height: var(--nav-height);
+    }
+
+    .menu__link:hover, .nav-bar__link-login:hover, .nav-bar__link-register:hover {
+        background-color: var(--color-bg-content-nav);
+    }
+
+    .nav-bar__options-container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+#menuLink {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#menuLink:hover {
+    color:#FFCC00;
+}
