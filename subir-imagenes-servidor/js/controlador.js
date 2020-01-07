@@ -10,6 +10,7 @@ $(document).ready(function() {
             contentType: false ,
             processData: false ,
             success:function(datos){
+                document.getElementById("respuesta").innerHTML="";
                 $("#respuesta").html(datos);
             }
         });
