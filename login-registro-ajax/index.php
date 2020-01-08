@@ -7,6 +7,8 @@
         $query->bindParam(':id',$_SESSION['user_id']);
         $query->execute();
         $res = $query->fetch(PDO::FETCH_ASSOC);
+    } else {
+        header("Location: login-signup.php");
     }
 ?>
 <!DOCTYPE html>
@@ -39,7 +41,9 @@
                             Tus Credenciales:
                         </h3>
                         <p>
-                            <b>ID Empleado </b><?=$res['ID_EMPLEADO'];?><br>
+                            <b>ID Empleado </b>
+                            <input type="text" value="<?=$res['ID_EMPLEADO'];?>" id="user_id" style="text-align:center;" disabled>
+                            <br>
                             <b>Correo </b><?=$res['CORREO'];?><br>
                             <b>Nombre Usuario </b><?=$res['USUARIO'];?><br>
                         </p><br>
@@ -48,7 +52,41 @@
                 <div class="col-md-6 my-auto">
                     <center>
                         <img src="img/306232.png" class="img-fluid" alt="" width="200"><br>
+                        <br>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            Añadir Fotografia
+                        </button>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Formulario Para Añadir Una Fotografia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <center>
+                                    <form method="POST" id="formulario" enctype="multipart/form-data">
+                                        <h3>Subir Imagen:</h3>
+                                        <input type="file" name="imagen" id="imagen" class="btn btn-primary"><br><br>
+                                        <input type="button" value="Enviar Imagen" class="btn btn-success" id="btn-enviar">
+                                    </form><br>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Salir Sin Hacer Nada</button>
+                                </center>
+                            </div>
+                            <div class="modal-footer">
+                                <!--button type="button" class="btn btn-danger" data-dismiss="modal">Salir Sin Hacer Nada</button-->
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </center>
+
                 </div>
             </div>
         </div>
@@ -90,41 +128,52 @@
     <?php 
         endif; 
     ?>
-        <div class="container" id="contenedor-mostrar-informacion" style="display: none">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+    <div class="container" id="contenedor-mostrar-informacion" style="display: none">
         <div class="row mt-5">
             <div class="col-md-12">
                 <table class="table table-bordered table-dark table-hover">
                     <thead>
                         <th>
-                            No
+                            ID Articulo
                         </th>
                         <th>
-                            Articulo
+                            ID Empleado
                         </th>
                         <th>
-                            Seccion
+                            Nombre Articulo
                         </th>
                         <th>
-                            Pais De Origen
+                            Seccion Articulo
                         </th>
                         <th>
-                            Precio
+                            Pais de Origen
                         </th>
                         <th>
-                            Cantidad
+                            Precio Por Unidad
                         </th>
                         <th>
-                            Fotografia Articulo
+                            Existencia del Articulo
                         </th>
                     </thead>
-                </table>
-                <tbody id="Mostrar Informacion">
+                    <tbody id="articulos">
 
-                </tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <div class="container" id="contenedor-insertar-informacion" style="display:none;">
+    <div class="container contenedor-insertar-informacion" id="contenedor-insertar-informacion" style="display:none;">
         <div class="row mt-5">
             <div class="col-md-3">
 
@@ -150,8 +199,13 @@
                             <input type="text" class="form-control form-control-lg" placeholder="Cantidad Articulo" id="txt-cantidad-art">
                         </div>
                         <div>
-                            <input type="submit" class="btn btn-outline-light btn-block " value="Guardar Informacion Del Articulo" id="btn-insertar">
+                            <input type="button" class="btn btn-outline-light btn-block " value="Guardar Informacion Del Articulo" id="btn-insertar">
                         </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" id="respuesta">
+                    
                     </div>
                 </div>
             </div>

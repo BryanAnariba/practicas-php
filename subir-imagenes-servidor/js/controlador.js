@@ -2,6 +2,7 @@ $(document).ready(function() {
     //console.log('Works');
     $("#btn-enviar").click(function () {
         var formData = new FormData($("#formulario")[0]);
+        console.log(formData);
         var ruta = "procesar-imagen.php";
         $.ajax({
             url: ruta ,
