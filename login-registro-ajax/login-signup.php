@@ -11,7 +11,7 @@
 <body>
 <div class="contenedor-form">
         <div class="toggle">
-            <span> Crear Cuenta</span>
+            <span>Crear Cuenta</span>
         </div>
         
         <div class="formulario">
@@ -29,7 +29,7 @@
         </div>
         
         <div class="formulario" id="formulario"> 
-            <h2>Crea tu Cuenta</h2>
+            <h2>Iniciar Sesion</h2>
             <form action="#">
                 <input type="text" placeholder="Digite los Nombres del Empleado"  required id="txt-nombre">
 

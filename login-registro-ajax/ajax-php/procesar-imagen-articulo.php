@@ -1,8 +1,9 @@
 <?php
-    //session_start();
-    //if(isset($_SESSION["user_id"])){
-        //echo $_SESSION["user_id"];
-    //}
+    require("../db/connection.php");
+    session_start();
+    if(isset($_SESSION["user_id"])){
+        $idUsuario = $_SESSION["user_id"];
+    }
     if(isset($_FILES["imagen"])) {
             //Propiedades de la imagen
             $nombre_imagen = $_FILES['imagen']['name'];
@@ -24,11 +25,6 @@
                     //primer parametro la ruta temporal donde se almacena y segundo la carpeta de destino
                     //la movemos del directorio temporal al escogido
                     move_uploaded_file($_FILES['imagen']['tmp_name'] , $carpeta_destino.$nombre_imagen);
-                    echo "  <center>
-                                <h2 style='color:green;'>Imagen Almacenada Exitosamente 
-                                </h2>
-                            <center>
-                        ";
                 }
 
             } else {
@@ -36,5 +32,14 @@
             }
         } else {//caso contrario
             echo "No hay archivos";
+        }
+
+        $sql = "UPDATE TBL_PERSONAS SET FOTOGRAFIA = '$nombre_imagen' WHERE ID_PERSONA = $idUsuario";
+        $resultado = mysqli_query($connection , $sql);
+
+        if($resultado){
+            $json[] = array("mensaje" => "Fotografia Insertada Con Exito.");
+            $string = json_encode($json);
+            echo $string;
         }
 ?>

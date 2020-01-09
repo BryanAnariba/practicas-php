@@ -1,8 +1,13 @@
 <?php
+    session_start();
+    
+    if(isset($_SESSION['user_id'])) {
+        $idUsuario = $_SESSION['user_id'];
+    }
+
     require('../db/connection.php');
 
     //CAMPOS NORMALES
-    $idUsuario = $_POST['idUsuario'];
     $nombreArticulo = $_POST['nombreArticulo'];
     $seccionArticulo = $_POST['seccionArticulo'];
     $paisArticulo = $_POST['paisArticulo'];
