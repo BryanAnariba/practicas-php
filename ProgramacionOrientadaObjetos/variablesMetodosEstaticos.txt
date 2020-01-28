@@ -1,4 +1,0 @@
-static $nombreVariable
-
-
-debe ir en un metodo estico para poder acceder a la variabler

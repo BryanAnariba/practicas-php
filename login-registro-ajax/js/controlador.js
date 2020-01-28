@@ -27,6 +27,7 @@ $(document).ready(function(){
 
     //Peticion ajax para loguear a un usuario
     $("#btn-login").click(function(){
+        document.getElementById("mostrar-contenido").innerHTML = "";
         var parametros = `email=${$("#email").val()}&password=${$("#password").val()}`;
         console.log(parametros);
         $.ajax({

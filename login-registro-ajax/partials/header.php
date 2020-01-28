@@ -10,7 +10,7 @@
                 <div class="nav-bar__menu-container">
                     <ul class="menu">
                         <li class="menu__item">
-                            <a href="" class="menu__link" id="menuLink">
+                            <a href="" class="menu__link cursos" id="menuLink">
                                 Cursos
                             </a>
                         </li>

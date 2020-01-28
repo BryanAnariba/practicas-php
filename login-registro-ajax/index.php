@@ -93,6 +93,7 @@
         <br><br>
         <div class="container">
             <h2 class="text-center text-whit">Opciones a Realizar.</h2>
+            <input type="button" id="cursos" clas="btn btn-success" value="cursos">
             <hr>
             <div class="row mt-3">
                 <div class="col-md-6 col-sm-12 col-lg-3">
@@ -236,7 +237,7 @@
                     <div class="card-body">
                         <h2 class="text-center">Digite El Codigo del Articulo a Eliminar</h2>
                         <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="ID Articulo" id="txt-id-art">
+                            <input type="text" class="form-control form-control-lg" placeholder="ID Articulo" id="txt-id-art">
                         </div>
                         <div class="form-group">
                                 <input type="button" class="btn btn-outline-success btn-block" value="Ver Datos" id="btn-mostrar-datos-a-eliminar">
@@ -290,6 +291,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="mostrar-cursos">
+            
         </div>
     </div>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>

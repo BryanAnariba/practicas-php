@@ -24,6 +24,12 @@ $(document).ready(function() {
         document.getElementById("articulos").innerHTML = "";
 
 
+        //con esto le limpia todo el contenido perteneciente al boton eliminar
+        document.getElementById("art-eliminar").innerHTML = "";
+        document.getElementById("art-eliminar2").style.display = "none";
+        document.getElementById("txt-id-art").value = "";
+
+
         $.ajax({
             url:'ajax-php/procesar-listado-articulos.php',
             method:'GET',
@@ -71,6 +77,12 @@ $(document).ready(function() {
         document.getElementById("botones-actualizar").style.display = "none";
         document.getElementById("botones-actualizar").style.display = "none";
         document.getElementById("id-articulo-actualizar").value = "";
+
+        
+        //con esto le limpia todo el contenido perteneciente al boton eliminar
+        document.getElementById("art-eliminar").innerHTML = "";
+        document.getElementById("art-eliminar2").style.display = "none";
+        document.getElementById("txt-id-art").value = "";
     });
     $('#btn-insertar').click(function () {
 
@@ -145,6 +157,7 @@ $(document).ready(function() {
         document.getElementById("botones-actualizar").style.display = "none";
         document.getElementById("botones-actualizar").style.display = "none";
         document.getElementById("id-articulo-actualizar").value = "";
+        document.getElementById("art-eliminar").innerHTML = "";
     });
     $("#btn-mostrar-datos-a-eliminar").click(function () {
         let idArticulo = `idArticulo=${$("#txt-id-art").val()}`;//id del articulo a eliminar para mostrar los datos de ese articulo antes de eliminar
@@ -158,7 +171,17 @@ $(document).ready(function() {
             dataType: 'json',
             data: idArticulo ,
             success:function(respuesta) {
-                //console.log(respuesta);
+                console.log(respuesta);
+                if(respuesta.length == 0) {
+                    $("#art-eliminar").append(
+                        `<div class="alert alert-danger" role="alert">
+                            <center>
+                                <h2>No Hay Resultados en La Busqueda.</h2>
+                            </center>
+                        </div>`
+                    );
+                    document.getElementById("art-eliminar").display = "none";
+                }
                 for(var i=0; i<respuesta.length;i++) {
                     $("#art-eliminar").append(`
                         <div class="card">
@@ -183,14 +206,13 @@ $(document).ready(function() {
                                     <input type="text" class="form-control form-control-lg" id="txt-precio-art" value="${respuesta[i].precio}" disabled>
                                 </div>
                                 <div>
-                                <input type="text" class="form-control form-control-lg" id="txt-cant-art" value="${respuesta[i].cantidad}" disabled>
+                                    <input type="text" class="form-control form-control-lg" id="txt-cant-art" value="${respuesta[i].cantidad}" disabled>
                                 </div>
                                 <br>
                             </div>
                         </div>`
-                    );
-                }
-            
+                    );                
+                } 
             },
             error:function(error) {
                 console.log(error);
@@ -220,7 +242,7 @@ $(document).ready(function() {
     $("#btn-no").click(function () {
         document.getElementById("contenedor-eliminar-informacion").style.display = "none";
         document.getElementById("art-eliminar").innerHTML = "";
-        document.getElementById("art-eliminar2").innerHTML = "";
+        document.getElementById("art-eliminar2").style.display = "none";
         document.getElementById("txt-id-art").value = "";
     });
 
@@ -233,6 +255,11 @@ $(document).ready(function() {
         document.getElementById("contenedor-mostrar-informacion").style.display = "none";
         document.getElementById("contenedor-insertar-informacion").style.display = "none";
         document.getElementById("contenedor-eliminar-informacion").style.display = "none";
+        
+        //con esto le limpia todo el contenido perteneciente al boton eliminar
+        document.getElementById("art-eliminar").innerHTML = "";
+        document.getElementById("art-eliminar2").style.display = "none";
+        document.getElementById("txt-id-art").value = "";
         
     });
     $("#btn-buscar-articulo").click(function () {
@@ -329,4 +356,31 @@ $(document).ready(function() {
         document.getElementById("resultado-actualizacion").style.display = "none";
         document.getElementById("alerta-actualizado").innerHTML = "";
     });
+
+    //->
+    $("#cursos").click(function() {
+        document.getElementById("contenedor-insertar-informacion").style.display = "none";
+        document.getElementById("contenedor-eliminar-informacion").style.display = "none";
+        document.getElementById("actualizacion-articulo").style.display = "none";
+        document.getElementById("contenedor-mostrar-informacion").style.display = "none";
+        for(var i = 0; i<20 ; i++) {
+            $("#mostrar-cursos").append(`
+                <div class="col-lg-4 col-sm-12" style="margin-bottom: 8px;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lorem ipsum dolor sit.</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero accusantium, id minima facilis nobis sunt laborum soluta quod a corrupti harum sit dignissimos consequuntur alias.</p>
+                            <input type="button" id="more-info-teacher" class="btn btn-info btn-block" value="More Info">
+                        </div>
+                    </div>       
+                </div>
+            `);
+        }    
+    });
+
 });
+
+
+
