@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="principal">
         <div class="row mt-5">
-            <div class="col-lg-5 col-sm-12 mx-auto">
-                <div class="card animated jello">
+            <div class="col-lg-5 col-sm-12 mx-auto my-auto">
+                <img src="assets/img/undraw_researching_22gp.png" id="avatar" class="animated bounceInLeft">
+                <div class="card animated flipInX" id="card-box">
                     <div class="card-header bg-primary">
+                        <br>
+                        <br>
                         <h4 class="text-white text-center">Lo que Puedes Hacer</h4>
                     </div>
                     <div class="card-body bg-dark">
+                        <br>
                         <div class="form-group text-center text-white">
                             <input type="button" id="btn-login" class="btn btn-success" value="Login"> Or
                             <input type="button" id="btn-signup" class="btn btn-success" value="Sign Up">
@@ -29,11 +33,13 @@
     </div>
 
     <!--Contenedor para crear un nuevo usuario-->
-    <div class="container" id="contenedor-signup">
+    <div class="container animated jackInTheBox" id="contenedor-signup" style="display:none;">
         <div class="row mt-5">
             <div class="col-lg-5 col-sm-12 mx-auto">
+            <img src="assets/img/product-input-fields.png" id="avatar4">
                 <div class="card">
                     <div class="card-header bg-primary">
+                        <br><br>
                         <h4 class="text-white text-center">Rellene Los Siguientes Campos</h4>
                     </div>
                     <div class="card-body bg-dark text-white">
@@ -62,11 +68,14 @@
     </div>
 
     <!--Contenedor para loguearse-->
-    <div id="contenedor-email" class="container">
+    <div id="contenedor-email" class="container animated jackInTheBox" style="display:none;">
         <div class="row mt-5">
             <div class="col-md-5 col-sm-12 mx-auto">
+                <img src="assets/img/email.png" id="avatar2">
                 <div class="card">
                     <div class="card-header bg-primary">
+                        <br>
+                        <br>
                         <h4 class="text-white text-center">Correo Electronico</h4>
                     </div>
                     <div class="card-body bg-dark">
@@ -81,12 +90,14 @@
             </div>
         </div>
     </div>
-    <div id="contenedor-password" class="container">
+    <div id="contenedor-password" class="container animated flipInY" style="display:none;">
         <div class="row mt-5">
             <div class="col-md-5 col-sm-12 mx-auto">
+                <img src="assets/img/pass.png" id="avatar3">
                 <div class="card">
                     <div class="card-header bg-primary">
-                        <h4 class="text-white text-center">Contraseña</h4>
+                        <br><br>
+                        <h4 class="text-white text-center">Digite Contraseña</h4>
                     </div>
                     <div class="card-body bg-dark">
                         <div class="form-group">

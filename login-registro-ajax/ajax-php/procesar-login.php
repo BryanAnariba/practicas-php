@@ -9,12 +9,10 @@
         $bandera = password_verify($_POST['password'],$results['PASSWORD']);
         if($bandera == true){
             $_SESSION['user_id'] = $results['ID_EMPLEADO'];
-            $json[] = array("mensaje" => true);
-            $string = json_encode($json);
+            $string = json_encode($_SESSION['user_id']);
             echo $string;
         } else {
-            $json[] = array("mensaje" => false);
-            $string = json_encode($json);
+            $string = json_encode("error2");
             echo $string;
         }
     } 
