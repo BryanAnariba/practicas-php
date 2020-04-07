@@ -1,2 +1,0 @@
-*	async-request : peticion asincrona
-*	usando Axio en vez de fetch
