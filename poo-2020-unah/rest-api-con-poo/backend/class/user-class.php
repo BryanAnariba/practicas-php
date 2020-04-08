@@ -1,5 +1,5 @@
 <?php
-    class User {
+    class Usuario {
         private $completeName;
         private $email;
         private $password;
@@ -49,17 +49,64 @@
         }
 
         // AQUI VAN FUNCIONES CRUD 
+
+        // C
         public function saveUser() { // C
+            // Extraemos la data completa o informacion de la tabla en caso de ser BD
+            $contenidoArchivo = file_get_contents('../data/usuarios.json');
 
+            // convertimos a array asociativo del tipo ["clave" => "valor"];
+            $usuarios = json_decode($contenidoArchivo, true);
+
+            // Guardamos el elemento al arreglo con un indice 3 debido a que hay 3 resgistros se cuenta desde 0
+            $usuarios[] = array(
+                "completeName" => $this->completeName ,
+                "email" => $this->email ,
+                "password" => $this->password ,
+                "role" => $this->role
+            );
+            $archivo = fopen("../data/usuarios.json" , "w");
+            fwrite($archivo , json_encode($usuarios));
+            fclose($archivo);
         }
-        public function viewUser() { // R
 
+        // R
+        public static function viewUsers() { // R
+            $contenidoArchivo = file_get_contents('../data/usuarios.json');
+            echo $contenidoArchivo;
         }
-        public function updateUser() { // U
-
+        public static function viewUser($identificador) { // R
+            $contenidoArchivo = file_get_contents('../data/usuarios.json');
+            $usuarios = json_decode($contenidoArchivo , true);
+            $usuarioEncontrado = $usuarios[$identificador];
+            echo json_encode($usuarioEncontrado);
         }
-        public function deleteUser() { // D
 
+        // U
+        public function updateUser($identificador) { // U
+            $contenidoArchivo = file_get_contents('../data/usuarios.json');
+            $usuarios = json_decode($contenidoArchivo , true);
+            
+            // nuevo arreglo para actualizar y meter al arreglo de todo
+            $usuario = array(
+                "completeName" => $this->completeName,
+                "email" => $this->email,
+                "password" => $this->password,
+                "role" => $this->role
+            );
+
+            // Guardamos con esto
+            $usuarios[$identificador] = $usuario;
+            $archivo = fopen("../data/usuarios.json" , "w");
+            fwrite($archivo , json_encode($usuarios));
+            fclose($archivo);
+            
+        }
+
+        // D
+        public function deleteUser($identificador) { // D
+            $contenidoArchivo = file_get_contents('../data/usuarios.json');
+            $usuarios = json_decode($contenidoArchivo , true);
         }
     }
 ?>
