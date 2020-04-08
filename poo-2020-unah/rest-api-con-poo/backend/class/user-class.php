@@ -1,22 +1,22 @@
 <?php
     class User {
-        private $username;
+        private $completeName;
         private $email;
         private $password;
         private $role;
 
         // Constructor con parametros iniciales en PHP, en java el contructor debe ser igual al nombre de la clase PHP no
-        public function __construct($username,$email,$password,$role)
+        public function __construct($completeName,$email,$password,$role)
         {   
-            $this->username = $username;
+            $this->completeName = $completeName;
             $this->email = $email;
             $this->password = $password;
             $this->role = $role;
         }
 
         // USO SETTER -> para establecer valores una propiedad del objeto usuario
-        public function setUsername($username) {
-            $this->username = $username;
+        public function setcompleteName($completeName) {
+            $this->completeName = $completeName;
         }
         public function setEmail($email) {
             $this->email = $email;
@@ -29,8 +29,8 @@
         } 
 
         // USO GETTER -> para hacer el retorno del valor de una propiedad  del objeto usuario
-        public function getUsername() {
-            return $this->username;
+        public function getcompleteName() {
+            return $this->completeName;
         }
         public function getEmail() {
             return $this->email;
