@@ -104,9 +104,19 @@
         }
 
         // D
-        public function deleteUser($identificador) { // D
+        public static function deleteUser($identificador) { // D
+            // cargamos el json en un arreglo de php
             $contenidoArchivo = file_get_contents('../data/usuarios.json');
+
+            // El arreglo de php lo hacemos asociativo
             $usuarios = json_decode($contenidoArchivo , true);
+
+            // eliminamos con splice de php mandando el usuario el identificador a eliminar y el 1 para solo eliminar el registri
+            array_splice($usuarios , $identificador , 1);
+
+            $archivo = fopen('../data/usuarios.json','w'); // abrimos el archivo
+            fwrite($archivo , json_encode($usuarios));// sobreescribimos con el arreglo que le quitamos el usuario eliminado
+            fclose($archivo); // Cerramos conexion
         }
     }
 ?>

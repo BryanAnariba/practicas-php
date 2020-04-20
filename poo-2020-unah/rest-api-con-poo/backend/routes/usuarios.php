@@ -46,6 +46,7 @@
         // Eliminar un usuario
         case 'DELETE':
             $res['mensaje'] = "Eliminar el usuarios con el identificador -> " . $_GET['id'];
+            Usuario::deleteUser($_GET['id']);
             echo json_encode($res);
         break;
 
