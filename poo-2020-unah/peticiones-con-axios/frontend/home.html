@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="jumbotrom bg-primary">
+                    <div class="card">
+                        <div class="card-header bg-primary text-center text-white">
+                            <h3>Datos Personales</h3>
+                        </div>
+                        <div class="card-body text-center" id="datos-user">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <img src="./public/img/escritorio.png" alt=""> <b>ID: </b> <p id="id"></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <img src="./public/img/anadir.png" alt=""> <b>Nombre: </b> <p id="nombre"></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <img src="./public/img/iniciar-sesion.png" alt=""> <b>Apellido: </b> <p id="apellido"></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group"> 
+                                        <img src="./public/img/correo.png" alt=""> <b>Correo: </b> <p id="correo"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./public/js/axios.min.js"></script>
+    <script src="./public/js/home-controller.js"></script>
+</body>
+</html>

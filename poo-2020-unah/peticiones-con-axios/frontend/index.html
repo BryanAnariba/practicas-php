@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | registro</title>
+    <link rel="stylesheet" href="./public/css/estilos.css">
+</head>
+<body>
+    <div class="contenedor-form">
+        <div class="toggle">
+            <span> Crear Cuenta</span>
+        </div>
+        
+        <div class="formulario">
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <input type="email" id="email" name="emailUsuarios" placeholder="Usuario" required>
+                <input type="password" id="clave" name="claveUsuario" placeholder="Contraseña" required>
+                <input type="button" value="Iniciar Sesión" onclick="logueo ()">
+            </form>
+        </div>
+        
+        <div class="formulario">
+            <h2>Crea tu Cuenta</h2>
+            <form>
+                <input type="text" id="nombreCompleto" placeholder="Nombre Usuario" required>
+
+                <input type="text" id="apellidoCompleto" placeholder="Apellido Usuario" required>
+
+                <input type="text" id="telefonoUsuario" placeholder="Teléfono Usuario" required>
+
+                <select  id="generoUsuario">
+
+                </select>
+
+                <input type="email" id="emailUsuario" placeholder="Correo Electronico Usuario" required>
+                
+                <input type="password" id="claveUsuario" placeholder="Contraseña Usuario" required>
+                
+                <input type="button" value="Registrarse" onclick="insertarUsuario ()">
+            </form>
+        </div>
+        <div class="reset-password">
+            <a href="#">Olvide mi Contraseña?</a>
+        </div>
+    </div>
+    <script src="./public/js/jquery-3.1.1.min.js"></script>    
+    <script src="./public/js/main.js"></script>
+    <script src="./public/js/axios.min.js"></script>
+    <script src="./public/js/register-controller.js"></script>
+</body>
+</html>
