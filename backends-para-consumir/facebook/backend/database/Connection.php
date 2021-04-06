@@ -1,12 +1,12 @@
 <?php
     require_once('../config/config.php');
-    Class Connection {
+    class Connection {
         private $host;
         private $dataBase;
         private $user;
         private $password;
         private $charset;
-        private $conexion;
+        private $connection;
 
         public function __construct() {
             $this->host = constant('HOST');
@@ -16,24 +16,23 @@
             $this->charset = constant('CHARSET');
         }
 
-        // Metodo que realiza la conexion
         public function connect () {
             try{
-                $this->conexion = "mysql:host=" . $this->host . ";dbname=" . $this->dataBase . ";charset=" . $this->charset;
+                $this->connection = "mysql:host=" . $this->host . ";dbname=" . $this->dataBase . ";charset=" . $this->charset;
                 $options = [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_EMULATE_PREPARES => false,
                 ];
                 
-                $this->conexion = new PDO($this->conexion, $this->user, $this->password, $options);
+                $this->connection = new PDO($this->connection, $this->user, $this->password, $options);
                 //echo('Conexión a MYSQL BD exitosa');
-                return $this->conexion;
+                return $this->connection;
             }catch(PDOException $e){
                 echo('Error connection: ' . $e->getMessage());
                 die();
             }
         }
     }
-    // Testeo de la conexion
-    //$miConexion = new Conexion();
-    //$miConexion->connect();
+    // connection test 
+    // $connection = new Connection();
+    // $connection->connect();
