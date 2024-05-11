@@ -8,7 +8,7 @@
 
 ## CREACION DE MODELOS Y CONTROLADORES
 ` Modelo: ```php artisan make:model Note```
-- Controlador: ```php artisan make:controller ```
+- Controlador: ```php artisan make:controller Note```
 
 ## PARA BASES DE DATOS
 - Ejecutar una migracion para crear una tabla: ```php artisan make:migration create_nombreplurar_table```, esto es solo al crear la tabla o archivo php de migrations,  luego de esto si agregas campos no es necesario ejecutarlo, para eso es necesario el siguiente comando abajo
