@@ -7,6 +7,19 @@
     <title>Users Page</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1>User List:</h1>
+    @if ($users->isEmpty())
+        <p>
+            <i>
+                Users list is empty!
+            </i>
+        </p>
+    @else
+        <ul>
+            @foreach ($users as $user)
+                <li>{{$user->name}} - {{$user->age}}</li>
+            @endforeach
+        </ul>
+    @endif
 </body>
 </html>
